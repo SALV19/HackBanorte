@@ -16,8 +16,8 @@
       {
         "name": "chat",
         "schemaName": "public",
-        "x": 669.223483861307,
-        "y": 328.4190436067716
+        "x": 709.1060604161203,
+        "y": 336.39555891773426
       },
       {
         "name": "mensaje",
@@ -54,6 +54,84 @@
         "schemaName": "public",
         "x": 464.93798828125,
         "y": 12
+      },
+      {
+        "name": "t",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 812.4552822527922
+      },
+      {
+        "name": "tr",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 812.4552822527922
+      },
+      {
+        "name": "tra",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 812.4552822527922
+      },
+      {
+        "name": "tran",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 812.4552822527922
+      },
+      {
+        "name": "trans",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 812.4552822527922
+      },
+      {
+        "name": "transa",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 812.4552822527922
+      },
+      {
+        "name": "transac",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 812.4552822527922
+      },
+      {
+        "name": "transacc",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 812.4552822527922
+      },
+      {
+        "name": "transacci",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 812.4552822527922
+      },
+      {
+        "name": "transaccio",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 812.4552822527922
+      },
+      {
+        "name": "transaccion",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 812.4552822527922
+      },
+      {
+        "name": "transaccione",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 812.4552822527922
+      },
+      {
+        "name": "transacciones",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 812.4552822527922
       }
     ],
     "tableGroupCollapseStates": [],
@@ -145,6 +223,231 @@
           "id_usuario"
         ],
         "secondTableName": "documentos",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "t",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_ui"
+        ],
+        "firstTableName": "ui",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_ui"
+        ],
+        "secondTableName": "perfil_intencion",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_documento"
+        ],
+        "firstTableName": "documento",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_documento"
+        ],
+        "secondTableName": "chunk_documento",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "tr",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "tra",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "tran",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "trans",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "transa",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "transac",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "transacc",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "transacci",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "transaccio",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "transaccion",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "transaccione",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "transacciones",
         "secondSchemaName": "public",
         "secondRelation": "*",
         "checkPoints": []
