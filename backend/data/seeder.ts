@@ -99,13 +99,13 @@ async function createTransactions(users: any[]) {
 
   const getRandomDate = () => {
     const now = new Date();
-    const pastDays = Math.floor(Math.random() * 90); // Últimos 90 días
+    const pastDays = Math.floor(Math.random() * 365); // Últimos 90 días
     return new Date(now.setDate(now.getDate() - pastDays));
   };
 
   for (const user of users) {
     // 1. Garantizar al menos 1 o 2 INGRESOS por usuario
-    const incomeCount = Math.floor(Math.random() * 2) + 1;
+    const incomeCount = Math.floor(Math.random() * 18) + 12;
     for (let i = 0; i < incomeCount; i++) {
       const template =
         incomeTemplates[Math.floor(Math.random() * incomeTemplates.length)];
@@ -125,7 +125,7 @@ async function createTransactions(users: any[]) {
       });
     }
 
-    const expenseCount = Math.floor(Math.random() * 5) + 6;
+    const expenseCount = Math.floor(Math.random() * 36) + 24;
     for (let i = 0; i < expenseCount; i++) {
       const template =
         expenseTemplates[Math.floor(Math.random() * expenseTemplates.length)];
