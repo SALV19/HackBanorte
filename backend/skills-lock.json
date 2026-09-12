@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "mongodb-mcp-setup": {
+      "source": "mongodb/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/mongodb-mcp-setup/SKILL.md",
+      "computedHash": "6b4af68989769d6f002f66e8c7e2dfbc149eccba7c06d4547592cfcfb8cf48d3"
+    }
+  }
+}
