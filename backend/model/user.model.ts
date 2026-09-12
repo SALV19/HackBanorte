@@ -3,14 +3,14 @@ import { model, Schema } from "mongoose";
 
 export interface User {
   id_usuario?: Types.ObjectId;
-  nombre: string;
+  name: string;
   age: number;
   job: string;
   account: Types.ObjectId;
 }
 
 const UserSchema = new Schema<User>({
-  nombre: { type: String, required: true },
+  name: { type: String, required: true },
   age: { type: Number, required: true },
   job: { type: String, required: true },
   account: { type: Types.ObjectId, required: true },
