@@ -22,7 +22,7 @@ const UserModel = model<User>("User", UserSchema);
 export const UserDataAccess = {
   getUserByName: async (name: string) => {
     try {
-      const user = await UserModel.findOne({ nombre: name }).exec();
+      const user = await UserModel.findOne({ name }).exec();
       return user;
     } catch (error) {
       throw new Error(
