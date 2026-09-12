@@ -1,8 +1,18 @@
+// server.ts
 import 'dotenv/config';
 import app from './app';
+import { connectMcp } from './services/mcpClient';
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+async function start() {
+  const mcp = await connectMcp();
+  const { tools } = await mcp.listTools();
+  console.log('Tools MCP descubiertas:', tools.map((t) => t.name));
+
+  app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  });
+}
+
+start();
