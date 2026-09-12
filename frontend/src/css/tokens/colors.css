@@ -1,0 +1,19 @@
+:root {
+    --color-orange-primary: #F7941D;
+    --color-yellow-primary: #F3B201;
+    --color-green-primary: #15A19B;
+    --color-green-secondary: #03504D;
+    --color-green-tertiary: #C4DEDD;
+    --color-green-quaternary: #C4EBE9;
+    --color-green-quintiary: #dff8f1;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-red-primary: #EC6060;
+    --color-red-secondary: #E9D9D4;
+    --color-bg: #EFFFF9;
+    --color-gray-bg: #989898;
+    --color-lightgray: #dbdbdba0;
+    --color-purple-primary: #4E02FF;
+    --color-green-products: #009646;
+    --color-green-cards: #CBF4D2;
+}
