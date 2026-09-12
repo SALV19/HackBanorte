@@ -1,27 +1,37 @@
 // mcp/servidor_mcp.ts
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { z } from 'zod';
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
 
 const server = new McpServer({
-  name: 'servidor-pension',
-  version: '1.0.0',
+  name: "servidor-pension",
+  version: "1.0.0",
 });
 
 server.registerTool(
-  'simular_retiro_pension',
+  "simular_retiro_pension",
   {
-    title: 'Simular retiro de pensión',
+    title: "Simular retiro de pensión",
     description:
-      'Calcula una proyección de saldo al retiro dado un ahorro actual, aportación mensual, tasa de interés anual y años restantes.',
+      "Calcula una proyección de saldo al retiro dado un ahorro actual, aportación mensual, tasa de interés anual y años restantes.",
     inputSchema: {
-      ahorro_actual: z.number().describe('Ahorro acumulado hoy, en pesos'),
-      aportacion_mensual: z.number().describe('Aportación mensual, en pesos'),
-      tasa_anual: z.number().describe('Tasa de interés anual esperada, ej. 0.08 para 8%'),
-      anios_restantes: z.number().int().describe('Años que faltan para el retiro'),
+      ahorro_actual: z.number().describe("Ahorro acumulado hoy, en pesos"),
+      aportacion_mensual: z.number().describe("Aportación mensual, en pesos"),
+      tasa_anual: z
+        .number()
+        .describe("Tasa de interés anual esperada, ej. 0.08 para 8%"),
+      anios_restantes: z
+        .number()
+        .int()
+        .describe("Años que faltan para el retiro"),
     },
   },
-  async ({ ahorro_actual, aportacion_mensual, tasa_anual, anios_restantes }) => {
+  async ({
+    ahorro_actual,
+    aportacion_mensual,
+    tasa_anual,
+    anios_restantes,
+  }) => {
     // Interés compuesto mensual simple — datos de prueba, sin banco real todavía
     const tasaMensual = tasa_anual / 12;
     const meses = anios_restantes * 12;
@@ -34,7 +44,7 @@ server.registerTool(
     return {
       content: [
         {
-          type: 'text',
+          type: "text",
           text: JSON.stringify({
             saldo_proyectado: Math.round(saldo),
             anios_restantes,
@@ -52,6 +62,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error('Error iniciando servidor MCP:', err);
+  console.error("Error iniciando servidor MCP:", err);
   process.exit(1);
 });
