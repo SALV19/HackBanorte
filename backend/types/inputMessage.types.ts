@@ -6,6 +6,7 @@ export const inputMessage = z.object({
     message: "Debes seleccionar un perfil para poder interactuar con el chat",
   }),
   content: z.string({ message: "Contenido faltante, escribe un mensaje" }),
+  conversationId: z.string().optional(),
 });
 export type inputMessageType = z.infer<typeof inputMessage>;
 
