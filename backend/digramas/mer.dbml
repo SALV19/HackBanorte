@@ -27,20 +27,33 @@ table mensaje {
 
 table ui {
     id_ui int [pk, increment]
+    nombre varchar(255)
     ui_json json
     }
 
-table vector_intencion {
-  edad int
-  trabajo varchar(255)
-  ingreso_mensual float
-  gasto_mensual float
-  intencion varchar(255)
+table perfil_intencion {
+  edad                 int
+  trabajo              varchar
+  ingreso_mensual      float
+  gasto_mensual        float
+  intencion            varchar
+  texto_contexto       text
+  embedding            vector 
+  id_ui                 int [ref: > ui.id_ui]
 }
 
-table documentos {
+table documento {
   id_documento int [pk, increment]
   nombre varchar(255)
+  fuente varchar(255)
+  tipo varchar(255)
+}
+
+table chunk_documento {
+  id_chunk int [pk, increment]
+  id_documento int [ref: > documento.id_documento]
   contenido text
+  embedding vector
+  numero_chunk int
 }
 

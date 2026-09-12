@@ -26,16 +26,10 @@
         "y": 529.349703201782
       },
       {
-        "name": "vector_intencion",
-        "schemaName": "public",
-        "x": 400.07787003105807,
-        "y": 852.5107002926967
-      },
-      {
         "name": "ui",
         "schemaName": "public",
-        "x": 201.80919107761343,
-        "y": 874.9989485942402
+        "x": -341.35578074697014,
+        "y": 316.3149775746684
       },
       {
         "name": "ingreso",
@@ -44,10 +38,22 @@
         "y": 330.5990843813526
       },
       {
-        "name": "documentos",
+        "name": "perfil_intencion",
         "schemaName": "public",
-        "x": 665.6162793437071,
-        "y": 862.9210785631823
+        "x": 12,
+        "y": 270.0470010350151
+      },
+      {
+        "name": "documento",
+        "schemaName": "public",
+        "x": 73.2112995955124,
+        "y": 28
+      },
+      {
+        "name": "chunk_documento",
+        "schemaName": "public",
+        "x": 464.93798828125,
+        "y": 12
       }
     ],
     "tableGroupCollapseStates": [],
