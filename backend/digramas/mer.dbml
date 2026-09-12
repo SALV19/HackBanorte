@@ -1,0 +1,59 @@
+table usuario {
+  id_usuario int [pk, increment]
+  nombre varchar(255)
+  edad int
+  trabajo varchar(255)
+  cuenta_bancaria varchar(255)
+}
+
+table ingreso {
+  id_ingreso int [pk, increment]
+  id_usuario int [ref: > usuario.id_usuario]
+  fecha date
+  abono float
+  gasto float
+}
+
+table chat {
+  id_chat int [pk, increment]
+  id_usuario int [ref: > usuario.id_usuario]
+}
+
+table mensaje {
+  id_mensaje int [pk, increment]
+  id_chat int [ref: > chat.id_chat]
+  contenido text
+}
+
+table ui {
+    id_ui int [pk, increment]
+    nombre varchar(255)
+    ui_json json
+    }
+
+table perfil_intencion {
+  edad                 int
+  trabajo              varchar
+  ingreso_mensual      float
+  gasto_mensual        float
+  intencion            varchar
+  texto_contexto       text
+  embedding            vector 
+  id_ui                 int [ref: > ui.id_ui]
+}
+
+table documento {
+  id_documento int [pk, increment]
+  nombre varchar(255)
+  fuente varchar(255)
+  tipo varchar(255)
+}
+
+table chunk_documento {
+  id_chunk int [pk, increment]
+  id_documento int [ref: > documento.id_documento]
+  contenido text
+  embedding vector
+  numero_chunk int
+}
+

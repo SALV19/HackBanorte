@@ -1,0 +1,155 @@
+{
+  "version": "3.0.0",
+  "darkMode": true,
+  "gridEnabling": false,
+  "currentViewName": null,
+  "defaultView": {
+    "detailLevel": "All",
+    "relationshipMode": "All",
+    "tablePositions": [
+      {
+        "name": "usuario",
+        "schemaName": "public",
+        "x": 329.2676275476849,
+        "y": 570.4552822527922
+      },
+      {
+        "name": "chat",
+        "schemaName": "public",
+        "x": 669.223483861307,
+        "y": 328.4190436067716
+      },
+      {
+        "name": "mensaje",
+        "schemaName": "public",
+        "x": 731.0289049298258,
+        "y": 529.349703201782
+      },
+      {
+        "name": "ui",
+        "schemaName": "public",
+        "x": -341.35578074697014,
+        "y": 316.3149775746684
+      },
+      {
+        "name": "ingreso",
+        "schemaName": "public",
+        "x": 318.646091175179,
+        "y": 330.5990843813526
+      },
+      {
+        "name": "perfil_intencion",
+        "schemaName": "public",
+        "x": 12,
+        "y": 270.0470010350151
+      },
+      {
+        "name": "documento",
+        "schemaName": "public",
+        "x": 73.2112995955124,
+        "y": 28
+      },
+      {
+        "name": "chunk_documento",
+        "schemaName": "public",
+        "x": 464.93798828125,
+        "y": 12
+      }
+    ],
+    "tableGroupCollapseStates": [],
+    "stickyNoteLayouts": [],
+    "referencePaths": [
+      {
+        "firstFieldNames": [
+          "id_chat"
+        ],
+        "firstTableName": "chat",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_chat"
+        ],
+        "secondTableName": "mensaje",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "mensaje",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "chat",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "ui",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "ingreso",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      },
+      {
+        "firstFieldNames": [
+          "id_usuario"
+        ],
+        "firstTableName": "usuario",
+        "firstSchemaName": "public",
+        "firstRelation": "1",
+        "secondFieldNames": [
+          "id_usuario"
+        ],
+        "secondTableName": "documentos",
+        "secondSchemaName": "public",
+        "secondRelation": "*",
+        "checkPoints": []
+      }
+    ]
+  },
+  "views": {}
+}
