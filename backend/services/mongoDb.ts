@@ -8,6 +8,7 @@ export const mongoDB = async () => {
 
     await mongoose.connect(uri);
   } catch (error: unknown) {
+    console.error("Error real de Mongoose:", error);
     throw new Error("Error conectandose a la base de datos");
   }
 };
