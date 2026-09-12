@@ -5,13 +5,13 @@ import ollama from "ollama";
 import { messageContent } from "../types/inputMessage.types";
 
 async function runLLM(
-  provider: string,
-  model: string,
   context: messageContent,
+  provider: string = "ollama",
+  model: string = "gemma3:1b",
 ) {
   const role = "Atención al cliente en un banco";
   const query = `Trabajas en atención al cliente y llega una persona de 
-  ${context.age} años a preguntarte: ${context.message}. Ten en cuenta que el 
+  ${context.age} años a preguntarte: ${context.content}. Ten en cuenta que el 
   usuario trabaja de ${context.job} y gana ${context.income} y gasta 
   ${context.expenses} mensualmente`;
 
