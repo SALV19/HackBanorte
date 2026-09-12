@@ -1,5 +1,8 @@
-import express from "express";
+import 'dotenv/config';
+import app from './app';
 
-const app = express();
+const PORT = process.env.PORT || 3000;
 
-export default app;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});
