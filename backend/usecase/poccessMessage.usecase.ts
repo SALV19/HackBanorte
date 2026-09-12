@@ -5,7 +5,7 @@ import { AppError } from "../types/error.type";
 import runLLM from "../services/llm";
 
 async function processMessage(context: inputMessageType) {
-  const { content, userName } = context;
+  const { content, userName, conversationId } = context;
 
   const userData = await UserDataAccess.getUserByName(userName);
 
@@ -19,14 +19,16 @@ async function processMessage(context: inputMessageType) {
   }
 
   const messageContent: messageContent = {
-    ...userData,
+    // .toObject() porque userData es un Document de Mongoose: sin esto se
+    // cuelan internals y age/job llegan undefined al prompt.
+    ...userData.toObject(),
     // TODO
     income: 1000,
     expenses: 200,
     content,
   };
 
-  const intention = await runLLM(messageContent);
+  const intention = await runLLM(messageContent, conversationId);
 
   return intention;
 }
