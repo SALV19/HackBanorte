@@ -18,7 +18,7 @@ const TransactionsSchema = new Schema(
 export type Transactions = InferSchemaType<typeof TransactionsSchema>;
 
 // MODEL
-const TransactionsModel = model<Transactions>(
+export const TransactionsModel = model<Transactions>(
   "Transactions",
   TransactionsSchema,
 );
