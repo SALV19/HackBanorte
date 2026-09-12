@@ -6,18 +6,16 @@ export interface User {
   name: string;
   age: number;
   job: string;
-  account: Types.ObjectId;
 }
 
 const UserSchema = new Schema<User>({
   name: { type: String, required: true },
   age: { type: Number, required: true },
   job: { type: String, required: true },
-  account: { type: Types.ObjectId, required: true },
 });
 
 // MODEL
-const UserModel = model<User>("User", UserSchema);
+export const UserModel = model<User>("User", UserSchema);
 
 export const UserDataAccess = {
   getUserByName: async (name: string) => {
