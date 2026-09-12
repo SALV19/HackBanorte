@@ -1,0 +1,20 @@
+{
+  "name": "hackmty",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/SALV19/HackBanorte#readme",
+  "bugs": {
+    "url": "https://github.com/SALV19/HackBanorte/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SALV19/HackBanorte.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
