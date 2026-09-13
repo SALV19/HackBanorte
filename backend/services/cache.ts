@@ -57,6 +57,9 @@ export async function buscarEnCache(pregunta: string) {
   let mejor: { doc: (typeof candidatos)[number]; score: number } | null = null;
 
   for (const doc of candidatos) {
+    if (!Array.isArray(doc.embedding) || doc.embedding.length !== embedding.length) {
+      continue;
+    }
     const score = similitudCoseno(embedding, doc.embedding);
     if (score >= UMBRAL_SIMILITUD && (!mejor || score > mejor.score)) {
       mejor = { doc, score };

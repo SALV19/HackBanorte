@@ -1,0 +1,14 @@
+{
+  "name": "@hackbanorte/catalog",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "dependencies": {
+    "@a2ui/web_core": "^0.11.0",
+    "zod": "^3.25.76"
+  }
+}

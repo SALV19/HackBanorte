@@ -13,12 +13,14 @@
   "license": "ISC",
   "author": "",
   "type": "commonjs",
-  "main": "index.js",
+  "private": true,
+  "workspaces": ["catalog", "backend", "frontend"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install:all": "npm install --prefix backend && npm install --prefix frontend",
-    "seed": "npm run seed --prefix backend",
-    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
+    "dev": "concurrently \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "dev:back": "npm run dev -w backend",
+    "dev:front": "npm run dev -w frontend",
+    "seed": "npm run seed -w backend"
   },
   "dependencies": {
     "concurrently": "^10.0.5"

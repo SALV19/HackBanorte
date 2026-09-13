@@ -2,7 +2,17 @@
   "compilerOptions": {
     // File Layout
     // "rootDir": "./src",   // déjalo comentado, tu proyecto es flat (sin src/)
-    "outDir": "./dist",      // descomenta esta, la vas a necesitar para "build"
+
+    // outDir/declaration/declarationMap se quitaron a propósito: con
+    // "@hackbanorte/catalog" resuelto por "paths" a un .ts fuera de esta
+    // carpeta, tsc exige que TODOS los archivos del programa vivan bajo un
+    // único rootDir para poder calcular el output (TS6059) — y catalog/ está
+    // fuera por diseño (es un workspace hermano). El dev real corre con tsx
+    // (no le importa outDir), así que quitar esto no afecta nada que se use
+    // hoy. Si en algún momento hace falta un build real a dist/, hay que
+    // resolverlo con Project References o empaquetando catalog/ dentro del
+    // build de backend — por ahora "npm run build"/"npm start" (dist/) no
+    // sirven, avisar antes de intentar usarlos.
 
     "module": "nodenext",
     "target": "esnext",
@@ -11,8 +21,6 @@
     "esModuleInterop": true, // <- nueva, necesaria para imports de express, etc.
 
     "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
 
     // "noUncheckedIndexedAccess": true,
     // "exactOptionalPropertyTypes": true,
@@ -24,5 +32,10 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
+
+    "paths": {
+      "@hackbanorte/catalog": ["../catalog/index.ts"],
+      "@hackbanorte/catalog/*": ["../catalog/*"]
+    },
   }
 }

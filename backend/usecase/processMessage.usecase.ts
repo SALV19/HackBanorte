@@ -6,7 +6,7 @@ import runLLM from "../services/llm";
 import getUserFinance from "./getUserFinance.usecase";
 
 async function processMessage(context: inputMessageType) {
-  const { content, userName, conversationId } = context;
+  const { content, userName, conversationId, freshSurface } = context;
 
   const userData = await UserDataAccess.getUserByName(userName);
 
@@ -30,7 +30,7 @@ async function processMessage(context: inputMessageType) {
     content,
   };
 
-  const intention = await runLLM(messageContent, conversationId);
+  const intention = await runLLM(messageContent, conversationId, freshSurface);
 
   return intention;
 }

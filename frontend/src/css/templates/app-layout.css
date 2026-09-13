@@ -1,0 +1,27 @@
+@import "../tokens/colors.css";
+
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--color-background);
+}
+
+.app-layout__body {
+    flex: 1;
+    display: grid;
+    /* Lado a lado en escritorio/proyector: la superficie generativa (lo que
+       la demo necesita que se vea grande) recibe el espacio sobrante, el
+       chat se queda en un ancho de lectura fijo en vez de competir por el
+       mismo espacio. Apilado solo en pantallas angostas, donde no cabe. */
+    grid-template-columns: minmax(320px, 420px) 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .app-layout__body {
+        grid-template-columns: 1fr;
+    }
+}

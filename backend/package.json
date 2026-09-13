@@ -11,17 +11,21 @@
     "dev": "tsx watch server.ts",
     "build": "tsc",
     "seed": "tsx --env-file=../.env data/seeder.ts",
+    "limpiar-cache": "tsx --env-file=../.env scripts/limpiarCache.ts",
+    "measure-discard-rate": "tsx --env-file=../.env scripts/measureDiscardRate.ts",
     "start": "node dist/server.js",
     "mcp:dev": "tsx mcp/servidor_mcp.ts"
   },
   "dependencies": {
+    "@a2ui/web_core": "^0.11.0",
     "@google/genai": "^2.22.0",
+    "@hackbanorte/catalog": "*",
     "@modelcontextprotocol/sdk": "^1.30.0",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "mongodb": "^7.6.0",
     "mongoose": "^9.10.0",
-    "zod": "^4.6.2"
+    "zod": "^4.6.2",
+    "zod-to-json-schema": "^3.25.2"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",

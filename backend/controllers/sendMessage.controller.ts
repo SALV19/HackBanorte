@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { inputMessage } from "../types/inputMessage.types";
 import { AppError } from "../types/error.type";
-import processMessage from "../usecase/poccessMessage.usecase";
+import processMessage from "../usecase/processMessage.usecase";
 
 async function sendMessage(req: Request, res: Response) {
   try {

@@ -1,0 +1,36 @@
+@import "../tokens/colors.css";
+@import "../tokens/typography.css";
+
+.app-header {
+    background: var(--color-surface);
+    border-bottom: 3px solid var(--color-border-primary);
+    padding: 1rem 1.5rem;
+}
+
+.app-header__brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.app-header__mark {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-extra-bold);
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+    letter-spacing: var(--letter-spacing-tight);
+}
+
+.app-header__divider {
+    width: 1px;
+    height: 1.25rem;
+    background: var(--color-border);
+    align-self: center;
+}
+
+.app-header__product {
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+}

@@ -1,0 +1,112 @@
+@import "../../css/tokens/colors.css";
+@import "../../css/tokens/layout.css";
+@import "../../css/tokens/typography.css";
+
+.contribution-balance {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    font-family: var(--font-family-primary);
+}
+
+.contribution-balance__svg {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+.contribution-balance__base {
+    fill: var(--color-gray-300);
+}
+
+.contribution-balance__pole {
+    stroke: var(--color-gray-500);
+    stroke-width: 4;
+    stroke-linecap: round;
+}
+
+.contribution-balance__pivot {
+    fill: var(--color-gray-700);
+}
+
+.contribution-balance__bar {
+    stroke: var(--color-text-primary);
+    stroke-width: 4;
+    stroke-linecap: round;
+}
+
+.contribution-balance__beam {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contribution-balance__pan {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contribution-balance__string {
+    stroke: var(--color-gray-500);
+    stroke-width: 2;
+}
+
+.contribution-balance__plate {
+    fill: var(--color-gray-200);
+    stroke: var(--color-gray-500);
+    stroke-width: 1.5;
+}
+
+.contribution-balance__coin circle:first-child {
+    fill: var(--color-primary);
+    stroke: var(--color-red-dark);
+    stroke-width: 1;
+}
+
+.contribution-balance__coin-inner {
+    fill: var(--color-red-light);
+    opacity: 0.55;
+}
+
+.contribution-balance__captions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.contribution-balance__caption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.contribution-balance__caption--target {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.contribution-balance__caption-label {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-label);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.contribution-balance__caption-value {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contribution-balance__beam,
+    .contribution-balance__pan {
+        transition: none;
+    }
+}
