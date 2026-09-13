@@ -1,0 +1,17 @@
+@import "../tokens/colors.css";
+@import "../tokens/layout.css";
+
+.card-container {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-2xl);
+  padding: var(--space-6);
+}
+
+.card-container--muted {
+  background: var(--color-gray-100);
+}
+
+.card-container--warm {
+  background: var(--color-pink-lighter);
+}

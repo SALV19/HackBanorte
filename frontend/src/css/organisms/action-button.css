@@ -1,0 +1,27 @@
+@import "../tokens/colors.css";
+@import "../tokens/layout.css";
+
+.action-button {
+  align-items: center;
+  display: flex;
+  gap: var(--space-4);
+  justify-content: space-between;
+  min-width: 18rem;
+}
+
+.action-button__text {
+  display: grid;
+  gap: var(--space-1);
+  text-align: left;
+}
+
+.action-button__description {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 640px) {
+  .action-button {
+    width: 100%;
+  }
+}

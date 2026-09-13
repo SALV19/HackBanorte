@@ -1,0 +1,10 @@
+@import "../tokens/colors.css";
+@import "../tokens/layout.css";
+
+.legend-dot {
+  background: var(--legend-dot-color, var(--color-primary));
+  border-radius: var(--border-radius-full);
+  display: inline-flex;
+  height: 0.75rem;
+  width: 0.75rem;
+}

@@ -1,0 +1,16 @@
+@import "../tokens/layout.css";
+
+.expense-legend {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.expense-legend__item {
+  align-items: center;
+  display: flex;
+  gap: var(--space-2);
+}
+
+.expense-legend__item p {
+  margin-right: auto;
+}

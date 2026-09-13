@@ -1,0 +1,17 @@
+@import "../tokens/colors.css";
+@import "../tokens/layout.css";
+
+.metric-tile {
+  background: var(--color-gray-100);
+  border-radius: var(--border-radius-xl);
+  padding: var(--space-5);
+}
+
+.metric-tile--warm {
+  background: var(--color-pink-lighter);
+}
+
+.metric-tile__label {
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-3);
+}

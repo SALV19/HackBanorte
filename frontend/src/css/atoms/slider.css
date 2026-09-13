@@ -1,0 +1,7 @@
+@import "../tokens/colors.css";
+
+.slider {
+  accent-color: var(--color-primary);
+  cursor: pointer;
+  width: 100%;
+}

@@ -1,0 +1,26 @@
+@import "../tokens/layout.css";
+
+.scenario-comparison {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.scenario-comparison__options {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.scenario-comparison__chart {
+  height: 12rem;
+}
+
+.scenario-comparison__selected {
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  .scenario-comparison__options {
+    grid-template-columns: 1fr;
+  }
+}

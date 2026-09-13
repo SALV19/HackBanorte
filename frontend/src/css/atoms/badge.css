@@ -1,0 +1,28 @@
+@import "../tokens/colors.css";
+@import "../tokens/typography.css";
+@import "../tokens/layout.css";
+
+.badge {
+  align-items: center;
+  background: var(--color-pink-light);
+  border-radius: var(--border-radius-full);
+  color: var(--color-primary);
+  display: inline-flex;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  gap: var(--space-2);
+  min-height: 2rem;
+  padding: var(--space-1) var(--space-3);
+}
+
+.badge--success {
+  background: #e8f7ef;
+  color: #277a47;
+}
+
+.badge__dot {
+  background: currentColor;
+  border-radius: var(--border-radius-full);
+  height: 0.65rem;
+  width: 0.65rem;
+}

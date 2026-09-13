@@ -1,0 +1,81 @@
+@import "../tokens/colors.css";
+@import "../tokens/layout.css";
+@import "../tokens/typography.css";
+
+.retirement-timeline {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.retirement-timeline__rail {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: var(--space-4) auto 0;
+  max-width: 980px;
+  position: relative;
+  width: 100%;
+}
+
+.retirement-timeline__rail::before,
+.retirement-timeline__rail::after {
+  content: "";
+  height: 3px;
+  left: 9%;
+  position: absolute;
+  right: 9%;
+  top: 1.05rem;
+}
+
+.retirement-timeline__rail::before {
+  background: var(--color-gray-200);
+}
+
+.retirement-timeline__rail::after {
+  background: var(--color-primary);
+  right: 50%;
+}
+
+.retirement-timeline__point {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.retirement-timeline__dot {
+  background: var(--color-primary);
+  border: 5px solid var(--color-surface);
+  border-radius: var(--border-radius-full);
+  height: 3rem;
+  width: 3rem;
+}
+
+.retirement-timeline__dot--future {
+  background: var(--color-red-light);
+  opacity: 0.35;
+}
+
+.retirement-timeline__age {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.retirement-timeline__label {
+  color: var(--color-text-muted);
+}
+
+.retirement-timeline__metrics {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 640px) {
+  .retirement-timeline__metrics {
+    grid-template-columns: 1fr;
+  }
+}

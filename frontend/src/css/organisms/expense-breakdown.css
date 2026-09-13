@@ -1,0 +1,41 @@
+@import "../tokens/colors.css";
+@import "../tokens/layout.css";
+
+.expense-breakdown {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.expense-breakdown__content {
+  align-items: center;
+  display: flex;
+  gap: var(--space-6);
+}
+
+.expense-breakdown__donut {
+  align-items: center;
+  border-radius: var(--border-radius-full);
+  display: flex;
+  flex: 0 0 auto;
+  height: 9rem;
+  justify-content: center;
+  width: 9rem;
+}
+
+.expense-breakdown__hole {
+  align-items: center;
+  background: var(--color-surface);
+  border-radius: var(--border-radius-full);
+  display: flex;
+  flex-direction: column;
+  height: 6rem;
+  justify-content: center;
+  width: 6rem;
+}
+
+@media (max-width: 520px) {
+  .expense-breakdown__content {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

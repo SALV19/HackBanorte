@@ -1,0 +1,30 @@
+@import "../tokens/colors.css";
+@import "../tokens/typography.css";
+
+.title {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-heading);
+  margin: 0;
+}
+
+.title--sm { font-size: var(--font-size-xl); }
+.title--md { font-size: var(--font-size-2xl); }
+.title--lg { font-size: var(--font-size-4xl); }
+
+.text {
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+.text--sm { font-size: var(--font-size-sm); }
+.text--lg { font-size: var(--font-size-lg); }
+.text--muted { color: var(--color-text-muted); }
+.text--primary { color: var(--color-text-primary); }
+.text--brand { color: var(--color-primary); }
+.text--bold { font-weight: var(--font-weight-bold); }

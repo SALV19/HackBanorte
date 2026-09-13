@@ -1,0 +1,21 @@
+@import "../tokens/colors.css";
+@import "../tokens/typography.css";
+@import "../tokens/layout.css";
+
+.number-input {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  min-height: 3.5rem;
+  padding: var(--space-3) var(--space-4);
+  width: 100%;
+}
+
+.number-input:focus {
+  border-color: var(--color-primary);
+  outline: 3px solid var(--color-pink-light);
+}

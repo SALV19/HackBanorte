@@ -1,13 +1,30 @@
+@import "./css/tokens/colors.css";
+@import "./css/tokens/typography.css";
+@import "./css/tokens/layout.css";
+
 :root {
-  color: #1b1b1b;
-  background: #fafafa;
+  color: var(--color-text-primary);
+  background: var(--color-gray-100);
   color-scheme: light;
-  font: 16px/145% Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font: var(--font-weight-normal) var(--font-size-md) / var(--line-height-normal) var(--font-family-primary);
   font-synthesis: none;
-  letter-spacing: 0;
+  letter-spacing: var(--letter-spacing-normal);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
 }
 
 #root {
