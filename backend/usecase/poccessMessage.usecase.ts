@@ -3,9 +3,10 @@ import { UserDataAccess } from "../model/user.model";
 import { messageContent } from "../types/inputMessage.types";
 import { AppError } from "../types/error.type";
 import runLLM from "../services/llm";
+import getUserFinance from "./getUserFinance.usecase";
 
 async function processMessage(context: inputMessageType) {
-  const { content, userName } = context;
+  const { content, userName, conversationId } = context;
 
   const userData = await UserDataAccess.getUserByName(userName);
 
@@ -18,15 +19,18 @@ async function processMessage(context: inputMessageType) {
     throw noUserError;
   }
 
+  const { income, expenses } = await getUserFinance(String(userData._id));
+
   const messageContent: messageContent = {
-    ...userData,
-    // TODO
-    income: 1000,
-    expenses: 200,
+    // .toObject() porque userData es un Document de Mongoose: sin esto se
+    // cuelan internals y age/job llegan undefined al prompt.
+    ...userData.toObject(),
+    income: income,
+    expenses: expenses,
     content,
   };
 
-  const intention = await runLLM(messageContent);
+  const intention = await runLLM(messageContent, conversationId);
 
   return intention;
 }

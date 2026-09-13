@@ -1,0 +1,32 @@
+@import "../tokens/colors.css";
+@import "../tokens/layout.css";
+@import "../tokens/typography.css";
+
+.range-summary {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.range-summary__value {
+  align-items: end;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.range-summary__amount {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.range-summary__suffix {
+  color: var(--color-text-muted);
+}
+
+.range-summary__labels {
+  color: var(--color-text-muted);
+  display: flex;
+  font-size: var(--font-size-sm);
+  justify-content: space-between;
+}

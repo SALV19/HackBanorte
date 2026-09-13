@@ -1,0 +1,16 @@
+@import "../tokens/colors.css";
+@import "../tokens/typography.css";
+
+.currency-text {
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-2xl);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-tight);
+}
+
+.currency-text--sm { font-size: var(--font-size-lg); }
+.currency-text--lg { font-size: var(--font-size-3xl); }
+.currency-text--inverse { color: var(--color-text-inverse); }

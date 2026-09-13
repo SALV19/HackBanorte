@@ -1,0 +1,8 @@
+@import "../tokens/layout.css";
+
+.card-header {
+  align-items: flex-start;
+  display: flex;
+  gap: var(--space-4);
+  justify-content: space-between;
+}

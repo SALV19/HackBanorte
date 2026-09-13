@@ -1,0 +1,98 @@
+@import "../tokens/colors.css";
+@import "../tokens/layout.css";
+@import "../tokens/typography.css";
+
+.app-header {
+  align-items: center;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-8);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.app-header__brand,
+.app-header__profile {
+  align-items: center;
+  display: flex;
+}
+
+.app-header__brand {
+  gap: var(--space-4);
+}
+
+.app-header__mark {
+  align-items: center;
+  background: var(--color-primary);
+  border-radius: var(--border-radius-xl);
+  color: var(--color-text-inverse);
+  display: flex;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-black);
+  height: 3.25rem;
+  justify-content: center;
+  width: 3.25rem;
+}
+
+.app-header__name {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.app-header__nav {
+  display: flex;
+  gap: var(--space-10);
+}
+
+.app-header__nav a {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+  text-decoration: none;
+}
+
+.app-header__nav a[aria-current="page"] {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.app-header__profile {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-full);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+}
+
+.app-header__avatar {
+  align-items: center;
+  background: var(--color-pink-light);
+  border-radius: var(--border-radius-full);
+  color: var(--color-red-dark);
+  display: flex;
+  font-weight: var(--font-weight-bold);
+  height: 2rem;
+  justify-content: center;
+  width: 2rem;
+}
+
+@media (max-width: 900px) {
+  .app-header__nav {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .app-header {
+    padding: var(--space-4);
+  }
+
+  .app-header__profile span:not(.app-header__avatar) {
+    display: none;
+  }
+}

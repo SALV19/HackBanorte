@@ -1,0 +1,45 @@
+@import "../tokens/colors.css";
+@import "../tokens/layout.css";
+
+.monthly-income-control {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.monthly-income-control__row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.monthly-income-control__amount {
+  align-items: baseline;
+  display: flex;
+  gap: var(--space-2);
+}
+
+.monthly-income-control__percent {
+  align-items: center;
+  background: var(--color-pink-light);
+  border-radius: var(--border-radius-full);
+  color: var(--color-primary);
+  display: flex;
+  font-weight: var(--font-weight-bold);
+  height: 4rem;
+  justify-content: center;
+  width: 4rem;
+}
+
+.monthly-income-control__note {
+  border-top: 1px solid var(--color-border);
+  margin: 0;
+  padding-top: var(--space-4);
+}
+
+@media (max-width: 520px) {
+  .monthly-income-control__row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

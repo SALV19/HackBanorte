@@ -1,0 +1,65 @@
+@import "../tokens/colors.css";
+@import "../tokens/layout.css";
+@import "../tokens/typography.css";
+
+.timeline-summary {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.timeline-summary__rail {
+  display: grid;
+  grid-template-columns: repeat(var(--timeline-count, 3), minmax(0, 1fr));
+  margin: var(--space-4) auto 0;
+  position: relative;
+  width: 100%;
+}
+
+.timeline-summary__rail::before,
+.timeline-summary__rail::after {
+  content: "";
+  height: 3px;
+  left: 9%;
+  position: absolute;
+  right: 9%;
+  top: 1.05rem;
+}
+
+.timeline-summary__rail::before {
+  background: var(--color-gray-200);
+}
+
+.timeline-summary__rail::after {
+  background: var(--color-primary);
+  right: calc(100% - var(--timeline-progress, 50%));
+}
+
+.timeline-summary__point {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.timeline-summary__dot {
+  background: var(--timeline-dot-color, var(--color-primary));
+  border: 5px solid var(--color-surface);
+  border-radius: var(--border-radius-full);
+  height: 3rem;
+  width: 3rem;
+}
+
+.timeline-summary__metrics {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 640px) {
+  .timeline-summary__metrics {
+    grid-template-columns: 1fr;
+  }
+}

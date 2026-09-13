@@ -1,0 +1,125 @@
+@import "../tokens/colors.css";
+@import "../tokens/layout.css";
+@import "../tokens/typography.css";
+
+.generated-retirement-page {
+  background: var(--color-gray-100);
+  min-height: 100vh;
+}
+
+.generated-retirement-page__main {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: var(--space-12) var(--space-8) var(--space-8);
+}
+
+.generated-retirement-page__hero {
+  align-items: end;
+  display: flex;
+  gap: var(--space-6);
+  justify-content: space-between;
+  margin-bottom: var(--space-8);
+}
+
+.generated-retirement-page__eyebrow {
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin: 0 0 var(--space-4);
+}
+
+.generated-retirement-page__title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-5xl);
+  line-height: var(--line-height-tight);
+  margin: 0;
+}
+
+.generated-retirement-page__subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xl);
+  margin: var(--space-4) 0 0;
+}
+
+.generated-retirement-page__grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.generated-retirement-page__wide {
+  grid-column: span 2;
+}
+
+.generated-retirement-page__cta {
+  align-items: center;
+  background: var(--color-pink-lighter);
+  border: 1px solid var(--color-pink-light);
+  border-radius: var(--border-radius-2xl);
+  display: flex;
+  gap: var(--space-6);
+  justify-content: space-between;
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+}
+
+.generated-retirement-page__cta-copy {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.generated-retirement-page__disclaimer {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  margin: var(--space-8) 0 0;
+  text-align: center;
+}
+
+.segmented-control {
+  background: var(--color-gray-100);
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  padding: var(--space-1);
+}
+
+.segmented-control__item {
+  background: transparent;
+  border: 0;
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+}
+
+.segmented-control__item--active {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+@media (max-width: 980px) {
+  .generated-retirement-page__hero,
+  .generated-retirement-page__cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .generated-retirement-page__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .generated-retirement-page__wide {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .generated-retirement-page__main {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .generated-retirement-page__title {
+    font-size: var(--font-size-4xl);
+  }
+}

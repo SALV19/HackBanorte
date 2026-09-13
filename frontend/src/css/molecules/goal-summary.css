@@ -1,0 +1,29 @@
+@import "../tokens/colors.css";
+@import "../tokens/layout.css";
+
+.goal-summary__body {
+  align-items: center;
+  display: flex;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.goal-summary__copy {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.goal-summary__footer {
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+}
+
+@media (max-width: 520px) {
+  .goal-summary__body {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

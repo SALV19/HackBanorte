@@ -6,12 +6,13 @@ table usuario {
   cuenta_bancaria varchar(255)
 }
 
-table ingreso {
+table transacciones {
   id_ingreso int [pk, increment]
   id_usuario int [ref: > usuario.id_usuario]
-  fecha date
-  abono float
-  gasto float
+  date date
+  motivo string
+  category string
+  monto float
 }
 
 table chat {
