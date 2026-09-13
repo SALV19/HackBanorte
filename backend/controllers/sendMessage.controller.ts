@@ -27,6 +27,7 @@ async function sendMessage(req: Request, res: Response) {
       });
     }
 
+    console.error('Error al generar reporte:', error instanceof Error ? error.message : 'error');
     return res.status(500).json({
       success: false,
       error: "INTERNAL_SERVER_ERROR",

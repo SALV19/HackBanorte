@@ -6,7 +6,10 @@ export const mongoDB = async () => {
     let uri: string =
       process.env.MONGO_URI ?? "mongodb://localhost:27017/mock-db";
 
-    await mongoose.connect(uri);
+    await mongoose.connect(uri, {
+      dbName: process.env.MONGO_DB_NAME?.trim() || undefined,
+      serverSelectionTimeoutMS: 10000,
+    });
   } catch (error: unknown) {
     throw new Error("Error conectandose a la base de datos");
   }

@@ -20,4 +20,7 @@ async function start() {
   });
 }
 
-start();
+start().catch(error => {
+  console.error('No se pudo iniciar el backend:', error instanceof Error ? error.message : 'error');
+  process.exitCode = 1;
+});

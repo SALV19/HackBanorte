@@ -1,11 +1,6 @@
-@font-face {
-    font-family: Roboto;
-    src: url('../../public/Roboto-VariableFont_wdth\,wght.ttf');
-}
-
 :root {
-    --font-family-primary: Roboto;
-    --font-family-mono: "Roboto Mono";
+    --font-family-primary: 'Segoe UI', system-ui, sans-serif;
+    --font-family-mono: Consolas, monospace;
 
     --font-size-mn: 0.62rem; /* 10px */
     --font-size-xs: 0.75rem; /* 12px */
