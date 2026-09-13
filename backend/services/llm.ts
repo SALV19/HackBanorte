@@ -14,7 +14,11 @@ import type { Content } from "@google/genai";
 import { messageContent } from "../types/inputMessage.types";
 import { AppError } from "../types/error.type";
 import { getMcpClient } from "./mcpClient";
-import { a2uiSchema, a2uiJsonSchema, type A2uiResponse } from "../views/a2ui.schema";
+import {
+  a2uiSchema,
+  a2uiJsonSchema,
+  type A2uiResponse,
+} from "../views/a2ui.schema";
 import { Conversacion } from "../model/Conversacion";
 import { runAgent } from "../mcp/orchestrator";
 
@@ -35,7 +39,10 @@ type ConversacionDoc = InstanceType<typeof Conversacion>;
 // diferencia puramente de tipos.
 type ClienteMcpParaGenai = Parameters<typeof mcpToTool>[0];
 
-function buildSystemPrompt(context: messageContent, financialData: unknown): string {
+function buildSystemPrompt(
+  context: messageContent,
+  financialData: unknown,
+): string {
   return `
 Eres un agente de atención al cliente en un banco, especializado en decisiones de
 retiro y pensión. Atiendes a una persona de ${context.age} años que trabaja de
@@ -151,14 +158,19 @@ export async function runLLM(
 ): Promise<{ conversationId: string; componentes: A2uiResponse }> {
   // Este loop usa function calling nativo de Gemini. Las funciones reciben el
   // userId únicamente en el servidor; el modelo nunca puede escogerlo.
+  console.log("About to call RunAgent: ");
   const financialData = await runAgent(context.content, userId);
+  console.log("FinancialData: ", financialData);
   const systemInstruction = buildSystemPrompt(context, financialData);
+  console.log("All finished");
   const conversacion = await cargarConversacion(conversationId);
+  console.log("All finished");
   const componentes = await generarYGuardar(
     conversacion,
     context,
     systemInstruction,
   );
+  console.log("All finished");
 
   return { conversationId: conversacion.id as string, componentes };
 }

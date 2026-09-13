@@ -41,68 +41,77 @@ export async function runAgent(
       parts: [{ text: query }],
     },
   ];
+  console.log("Contents:", contents);
 
-  for (let step = 0; step < 5; step++) {
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents,
-      config: {
-        systemInstruction: SYSTEM_PROMPT,
-        tools: [{ functionDeclarations: toolDefinitions }],
-      },
-    });
+  try {
+    for (let step = 0; step < 5; step++) {
+      const response = await ai.models.generateContent({
+        model: process.env.GEMINI_MODEL ?? "gemini-3.6-flash",
+        contents,
+        config: {
+          systemInstruction: SYSTEM_PROMPT,
+          tools: [{ functionDeclarations: toolDefinitions }],
+        },
+      });
+      console.log("Response: ", response);
 
-    const candidate = response.candidates?.[0];
+      const candidate = response.candidates?.[0];
 
-    // Validar que exista el candidato y su contenido
-    if (!candidate || !candidate.content) {
-      throw new Error("No se obtuvo respuesta válida del modelo Gemini.");
-    }
-
-    // Solución al primer error: TypeScript ahora sabe que candidate.content no es undefined
-    contents.push(candidate.content);
-
-    const functionCalls = response.functionCalls;
-
-    if (!functionCalls || functionCalls.length === 0) {
-      return parseFinalResponse(response.text);
-    }
-
-    const toolResponseParts: Part[] = [];
-
-    for (const call of functionCalls) {
-      // Solución al segundo error: Proveer valores por defecto seguros
-      const toolName = call.name ?? "";
-      const toolArgs = (call.args as Record<string, any>) ?? {};
-
-      if (!toolName) {
-        continue; // Omitir si por algún motivo la llamada no tiene nombre
+      // Validar que exista el candidato y su contenido
+      if (!candidate || !candidate.content) {
+        throw new Error("No se obtuvo respuesta válida del modelo Gemini.");
       }
 
-      try {
-        const result = await executeTool(toolName, toolArgs, { userId });
-        toolResponseParts.push({
-          functionResponse: {
-            name: toolName,
-            response: { result },
-          },
-        });
-      } catch (err: unknown) {
-        const errorMessage =
-          err instanceof Error ? err.message : "Error desconocido";
-        toolResponseParts.push({
-          functionResponse: {
-            name: toolName,
-            response: { error: errorMessage },
-          },
-        });
-      }
-    }
+      // Solución al primer error: TypeScript ahora sabe que candidate.content no es undefined
+      contents.push(candidate.content);
 
-    contents.push({
-      role: "user",
-      parts: toolResponseParts,
-    });
+      const functionCalls = response.functionCalls;
+      console.log("functionCalls", functionCalls);
+
+      if (!functionCalls || functionCalls.length === 0) {
+        return parseFinalResponse(response.text);
+      }
+
+      const toolResponseParts: Part[] = [];
+
+      for (const call of functionCalls) {
+        // Solución al segundo error: Proveer valores por defecto seguros
+        const toolName = call.name ?? "";
+        const toolArgs = (call.args as Record<string, any>) ?? {};
+
+        if (!toolName) {
+          continue; // Omitir si por algún motivo la llamada no tiene nombre
+        }
+
+        try {
+          console.log("Tool: ", toolName, toolArgs);
+          const result = await executeTool(toolName, toolArgs, { userId });
+          toolResponseParts.push({
+            functionResponse: {
+              name: toolName,
+              response: { result },
+            },
+          });
+        } catch (err: unknown) {
+          const errorMessage =
+            err instanceof Error ? err.message : "Error desconocido";
+          toolResponseParts.push({
+            functionResponse: {
+              name: toolName,
+              response: { error: errorMessage },
+            },
+          });
+        }
+      }
+
+      contents.push({
+        role: "user",
+        parts: toolResponseParts,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    console.log("Error: Todo se derrumbo, dentro de mi, dentro de mi");
   }
 
   throw new Error(

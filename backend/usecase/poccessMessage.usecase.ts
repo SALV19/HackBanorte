@@ -9,6 +9,7 @@ async function processMessage(context: inputMessageType) {
   const { content, userName, conversationId } = context;
 
   const userData = await UserDataAccess.getUserByName(userName);
+  console.log("UserData: ", userData);
 
   if (!userData) {
     const noUserError = new AppError(
@@ -20,6 +21,7 @@ async function processMessage(context: inputMessageType) {
   }
 
   const { income, expenses } = await getUserFinance(String(userData._id));
+  console.log("IncomeExpeses: ", income, expenses);
 
   const messageContent: messageContent = {
     // .toObject() porque userData es un Document de Mongoose: sin esto se
@@ -30,7 +32,12 @@ async function processMessage(context: inputMessageType) {
     content,
   };
 
-  const intention = await runLLM(messageContent, String(userData._id), conversationId);
+  const intention = await runLLM(
+    messageContent,
+    String(userData._id),
+    conversationId,
+  );
+  console.log("Intention-2: ", intention);
 
   return intention;
 }

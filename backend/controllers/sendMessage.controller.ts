@@ -15,7 +15,9 @@ async function sendMessage(req: Request, res: Response) {
       });
     }
 
+    console.log("Resultado: ", result.data);
     const intention = await processMessage(result.data);
+    console.log("intention");
 
     return res.status(200).json({ success: true, message: intention });
   } catch (error) {
