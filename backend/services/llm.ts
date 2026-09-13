@@ -16,7 +16,7 @@ import { AppError } from "../types/error.type";
 import { getMcpClient } from "./mcpClient";
 import { a2uiSchema, a2uiJsonSchema, type A2uiResponse } from "../views/a2ui.schema";
 import { Conversacion } from "../model/Conversacion";
-import { buscarEnCache, guardarEnCache } from "./cache";
+import { runAgent } from "../mcp/orchestrator";
 
 const apiKey = process.env.GEMINI_API_KEY;
 if (!apiKey) throw new Error("Falta GEMINI_API_KEY en .env");
@@ -35,11 +35,7 @@ type ConversacionDoc = InstanceType<typeof Conversacion>;
 // diferencia puramente de tipos.
 type ClienteMcpParaGenai = Parameters<typeof mcpToTool>[0];
 
-type CacheInfo =
-  | { esPrimerMensaje: true; embedding: number[] }
-  | { esPrimerMensaje: false };
-
-function buildSystemPrompt(context: messageContent): string {
+function buildSystemPrompt(context: messageContent, financialData: unknown): string {
   return `
 Eres un agente de atención al cliente en un banco, especializado en decisiones de
 retiro y pensión. Atiendes a una persona de ${context.age} años que trabaja de
@@ -49,6 +45,11 @@ de vuelta como si fuera información nueva.
 
 Usa las tools disponibles para consultar datos o hacer cálculos antes de
 responder. Nunca inventes cifras que una tool pueda calcular.
+
+El agente de datos ya obtuvo el siguiente contexto desde MongoDB para ESTE
+usuario. Es la única fuente para cifras de ingresos, gastos o predicciones;
+no cambies sus valores y no atribuyas datos inexistentes:
+${JSON.stringify(financialData)}
 
 Cuando ya tengas la información, describe la interfaz a mostrar usando el
 catálogo de componentes:
@@ -70,7 +71,6 @@ async function generarYGuardar(
   conversacion: ConversacionDoc,
   context: messageContent,
   systemInstruction: string,
-  cacheInfo: CacheInfo,
 ): Promise<A2uiResponse> {
   const mcp = getMcpClient();
 
@@ -115,10 +115,6 @@ async function generarYGuardar(
   conversacion.markModified("contents");
   await conversacion.save();
 
-  if (cacheInfo.esPrimerMensaje) {
-    await guardarEnCache(context.content, cacheInfo.embedding, componentes);
-  }
-
   return componentes;
 }
 
@@ -150,48 +146,18 @@ async function cargarConversacion(
 
 export async function runLLM(
   context: messageContent,
+  userId: string,
   conversationId?: string,
 ): Promise<{ conversationId: string; componentes: A2uiResponse }> {
-  const systemInstruction = buildSystemPrompt(context);
+  // Este loop usa function calling nativo de Gemini. Las funciones reciben el
+  // userId únicamente en el servidor; el modelo nunca puede escogerlo.
+  const financialData = await runAgent(context.content, userId);
+  const systemInstruction = buildSystemPrompt(context, financialData);
   const conversacion = await cargarConversacion(conversationId);
-
-  const esPrimerMensaje =
-    ((conversacion.contents ?? []) as Content[]).length === 0;
-
-  // El cache semántico solo aplica al primer mensaje: los de seguimiento
-  // dependen del historial y no son reutilizables entre conversaciones.
-  if (esPrimerMensaje) {
-    const { embedding, match } = await buscarEnCache(context.content);
-
-    if (match) {
-      conversacion.contents = [
-        { role: "user", parts: [{ text: context.content }] },
-        { role: "model", parts: [{ text: JSON.stringify(match.componentes) }] },
-      ];
-      conversacion.markModified("contents");
-      await conversacion.save();
-
-      return {
-        conversationId: conversacion.id as string,
-        componentes: match.componentes as A2uiResponse,
-      };
-    }
-
-    const componentes = await generarYGuardar(
-      conversacion,
-      context,
-      systemInstruction,
-      { esPrimerMensaje: true, embedding },
-    );
-
-    return { conversationId: conversacion.id as string, componentes };
-  }
-
   const componentes = await generarYGuardar(
     conversacion,
     context,
     systemInstruction,
-    { esPrimerMensaje: false },
   );
 
   return { conversationId: conversacion.id as string, componentes };

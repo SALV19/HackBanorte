@@ -113,19 +113,19 @@ export async function executeTool(
 
   switch (name) {
     case "get_expense_report": {
-      const typedInput = input as GetExpenseReportInput;
+      const typedInput = validateExpenseReport(input);
       const data = await getMonthlyExpenseReport(userId, typedInput);
       return { chartHint: "bar_by_category", data };
     }
 
     case "get_income_series": {
-      const typedInput = input as GetSeriesInput;
+      const typedInput = validateSeries(input);
       const data = await getMonthlySeries(userId, "incomes", typedInput.months);
       return { chartHint: "line_timeseries", data };
     }
 
     case "get_expense_series": {
-      const typedInput = input as GetSeriesInput;
+      const typedInput = validateSeries(input);
       const data = await getMonthlySeries(
         userId,
         "expenses",
@@ -135,7 +135,7 @@ export async function executeTool(
     }
 
     case "forecast_income": {
-      const typedInput = input as ForecastInput;
+      const typedInput = validateForecast(input);
       const history = await getMonthlySeries(
         userId,
         "incomes",
@@ -146,7 +146,7 @@ export async function executeTool(
     }
 
     case "forecast_expenses": {
-      const typedInput = input as ForecastInput;
+      const typedInput = validateForecast(input);
       const history = await getMonthlySeries(
         userId,
         "expenses",
@@ -159,4 +159,23 @@ export async function executeTool(
     default:
       throw new Error(`Tool desconocida: ${name}`);
   }
+}
+
+function integer(value: unknown, name: string, min: number, max: number): number {
+  if (typeof value !== "number" || !Number.isInteger(value) || value < min || value > max) {
+    throw new Error(`${name} debe ser un entero entre ${min} y ${max}.`);
+  }
+  return value;
+}
+
+function validateExpenseReport(input: Record<string, unknown>): GetExpenseReportInput {
+  return { year: integer(input.year, "year", 2000, 2100), month: integer(input.month, "month", 1, 12) };
+}
+
+function validateSeries(input: Record<string, unknown>): GetSeriesInput {
+  return { months: integer(input.months, "months", 1, 60) };
+}
+
+function validateForecast(input: Record<string, unknown>): ForecastInput {
+  return { historyMonths: integer(input.historyMonths, "historyMonths", 2, 60), monthsAhead: integer(input.monthsAhead, "monthsAhead", 1, 24) };
 }

@@ -113,7 +113,12 @@ export async function runAgent(
 function parseFinalResponse(text?: string): AgentResponse {
   if (!text) throw new Error("Respuesta vacía del modelo.");
   try {
-    return JSON.parse(text) as AgentResponse;
+    const json = text.replace(/^```json\s*/i, "").replace(/\s*```$/, "");
+    const parsed = JSON.parse(json) as AgentResponse;
+    if (!parsed.narrative || !Array.isArray(parsed.insights) || !parsed.chart) {
+      throw new Error("JSON incompleto");
+    }
+    return parsed;
   } catch {
     // Si por algún motivo el formato no fue JSON estricto, devolvemos una estructura por defecto
     return {

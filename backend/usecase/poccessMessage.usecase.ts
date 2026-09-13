@@ -30,7 +30,7 @@ async function processMessage(context: inputMessageType) {
     content,
   };
 
-  const intention = await runLLM(messageContent, conversationId);
+  const intention = await runLLM(messageContent, String(userData._id), conversationId);
 
   return intention;
 }

@@ -15,12 +15,28 @@ import {
   linearRegressionLine,
   rSquared,
 } from "simple-statistics";
+import type { MonthlyPoint } from "./getExpensesReport.usecase";
 
 /**
  * @param {{year:number, month:number, total:number}[]} series - histórico ordenado cronológicamente
  * @param {number} monthsAhead
  */
-export function forecastSeries(series, monthsAhead = 3) {
+export function forecastSeries(series: MonthlyPoint[], monthsAhead = 3) {
+  if (series.length === 0) {
+    return { historical: [], forecast: [], method: "sin datos suficientes", fitQuality: null };
+  }
+  if (series.length === 1) {
+    const last = series[0]!;
+    return {
+      historical: series,
+      forecast: Array.from({ length: Math.max(1, monthsAhead) }, (_, i) => {
+        const d = new Date(Date.UTC(last.year, last.month - 1 + i + 1, 1));
+        return { year: d.getUTCFullYear(), month: d.getUTCMonth() + 1, total: last.total };
+      }),
+      method: "último valor observado",
+      fitQuality: null,
+    };
+  }
   const points = series.map((s, i) => [i, s.total]);
   const regression = linearRegression(points);
   const predict = linearRegressionLine(regression);
