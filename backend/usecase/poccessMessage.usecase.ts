@@ -5,6 +5,15 @@ import { AppError } from "../types/error.type";
 import runLLM from "../services/llm";
 import getUserFinance from "./getUserFinance.usecase";
 
+function determineIntention(content: string) {
+  const query = content.toLowerCase();
+  if (/pron[oó]stic|proyecci[oó]n|forecast|predec/.test(query)) return "forecast";
+  if (/reporte|desglose|categor[ií]a|gast/.test(query)) return "expense_report";
+  if (/ingreso|salario|gan[ée]/.test(query)) return "income_consult";
+  if (/retiro|pensi[oó]n|ahorro|aportaci[oó]n/.test(query)) return "retirement_consult";
+  return "general_consult";
+}
+
 async function processMessage(context: inputMessageType) {
   const { content, userName, conversationId } = context;
 
@@ -39,7 +48,7 @@ async function processMessage(context: inputMessageType) {
   );
   console.log("Intention-2: ", intention);
 
-  return intention;
+  return { ...intention, intention: determineIntention(content) };
 }
 
 export default processMessage;

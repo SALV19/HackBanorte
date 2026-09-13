@@ -12,7 +12,7 @@ export default function App() {
 
   return (
     <GeneratedRetirementPage
-      dashboard={generatedResult.dashboard}
+      result={generatedResult}
       onRestart={() => setGeneratedResult(null)}
       profile={generatedResult.profile}
     />

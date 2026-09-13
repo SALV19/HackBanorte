@@ -90,6 +90,11 @@
   padding: var(--space-1);
 }
 
+.a2ui-grid > .card-container { grid-column: span 1; }
+.a2ui-chart { grid-column: span 2 !important; }
+.a2ui-options, .a2ui-followup { display: grid; gap: var(--space-3); }
+.a2ui-followup { margin-top: var(--space-6); }
+
 .segmented-control__item {
   background: transparent;
   border: 0;

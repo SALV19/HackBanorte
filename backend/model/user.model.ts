@@ -18,6 +18,9 @@ const UserSchema = new Schema<User>({
 export const UserModel = model<User>("User", UserSchema);
 
 export const UserDataAccess = {
+  getRegisteredUsers: async () => {
+    return UserModel.find({}, { name: 1, age: 1, job: 1 }).sort({ name: 1 }).lean().exec();
+  },
   getUserByName: async (name: string) => {
     try {
       const user = await UserModel.findOne({ name }).exec();
