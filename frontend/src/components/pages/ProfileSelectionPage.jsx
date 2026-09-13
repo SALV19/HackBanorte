@@ -4,6 +4,7 @@ import Button from "../atoms/Button.jsx"
 import CardContainer from "../atoms/CardContainer.jsx"
 import NumberInput from "../atoms/NumberInput.jsx"
 import Text from "../atoms/Text.jsx"
+import TextArea from "../atoms/TextArea.jsx"
 import TextInput from "../atoms/TextInput.jsx"
 import Title from "../atoms/Title.jsx"
 import AppHeader from "../molecules/AppHeader.jsx"
@@ -36,14 +37,15 @@ export default function ProfileSelectionPage({ onDashboardGenerated }) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [profile, setProfile] = useState({
     name: "Mariana",
-    profileType: "planning",
+    profileType: "starter",
     currentAge: 28,
     retirementAge: 67,
-    currentSavings: 180000,
-    monthlyContribution: 7500,
+    currentSavings: 0,
+    monthlyContribution: 2500,
     desiredMonthlyIncome: 45000,
     riskTolerance: "balanced",
     mainGoal: "know_if_on_track",
+    openQuestion: "Tengo 28 años y no tengo nada ahorrado. ¿Qué debo hacer para empezar mi retiro?",
   })
 
   function updateProfile(key, value) {
@@ -126,6 +128,21 @@ export default function ProfileSelectionPage({ onDashboardGenerated }) {
             options={goalOptions}
             value={profile.mainGoal}
           />
+
+          <CardContainer>
+            <label className="profile-form__field">
+              <Title level={3} size="sm">Pregunta abierta</Title>
+              <Text>
+                Escribe tu duda como se la harías a un asesor. El backend la usará para elegir entre los cuatro casos del MVP.
+              </Text>
+              <TextArea
+                ariaLabel="Pregunta abierta sobre retiro o pensión"
+                onChange={(value) => updateProfile("openQuestion", value)}
+                placeholder="Ej. Tengo 28 años y no tengo nada ahorrado. ¿Qué debo hacer?"
+                value={profile.openQuestion}
+              />
+            </label>
+          </CardContainer>
 
           <div className="profile-form__actions">
             <Text className="profile-form__note">
