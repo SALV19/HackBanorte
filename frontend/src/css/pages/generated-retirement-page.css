@@ -41,6 +41,14 @@
   margin: var(--space-4) 0 0;
 }
 
+.generated-retirement-page__hero-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: flex-end;
+}
+
 .generated-retirement-page__grid {
   display: grid;
   gap: var(--space-6);
@@ -102,6 +110,10 @@
   .generated-retirement-page__cta {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .generated-retirement-page__hero-actions {
+    justify-content: flex-start;
   }
 
   .generated-retirement-page__grid {
