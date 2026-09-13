@@ -1,25 +1,25 @@
 @import "../tokens/colors.css";
 @import "../tokens/layout.css";
 
-.monthly-income-card {
+.monthly-income-control {
   display: grid;
   gap: var(--space-6);
 }
 
-.monthly-income-card__row {
+.monthly-income-control__row {
   align-items: center;
   display: flex;
   justify-content: space-between;
   gap: var(--space-4);
 }
 
-.monthly-income-card__amount {
+.monthly-income-control__amount {
   align-items: baseline;
   display: flex;
   gap: var(--space-2);
 }
 
-.monthly-income-card__percent {
+.monthly-income-control__percent {
   align-items: center;
   background: var(--color-pink-light);
   border-radius: var(--border-radius-full);
@@ -31,14 +31,14 @@
   width: 4rem;
 }
 
-.monthly-income-card__note {
+.monthly-income-control__note {
   border-top: 1px solid var(--color-border);
   margin: 0;
   padding-top: var(--space-4);
 }
 
 @media (max-width: 520px) {
-  .monthly-income-card__row {
+  .monthly-income-control__row {
     align-items: flex-start;
     flex-direction: column;
   }

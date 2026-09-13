@@ -7,23 +7,25 @@ import {
   RadarChart,
   ResponsiveContainer,
 } from "recharts"
-import Button from "../atoms/Button.jsx"
 import CardContainer from "../atoms/CardContainer.jsx"
 import Text from "../atoms/Text.jsx"
-import CardHeader from "../molecules/CardHeader.jsx"
-import ScenarioOption from "../molecules/ScenarioOption.jsx"
-import "../../css/organisms/scenario-comparison.css"
+import CardHeader from "./CardHeader.jsx"
+import ScenarioOption from "./ScenarioOption.jsx"
+import "../../css/molecules/scenario-comparison.css"
 
-export default function ScenarioComparison({ scenarios, selectedScenarioId, onSelectScenario }) {
-  const [internalSelected, setInternalSelected] = useState(selectedScenarioId || scenarios[1]?.id || scenarios[0]?.id)
+export default function ScenarioComparison({
+  kicker,
+  title,
+  scenarios,
+  selectedScenarioId,
+  selectedLabel,
+  action,
+  onSelectScenario,
+}) {
+  const [internalSelected, setInternalSelected] = useState(selectedScenarioId || scenarios[0]?.id)
   const selectedId = selectedScenarioId || internalSelected
   const selected = scenarios.find((scenario) => scenario.id === selectedId) || scenarios[0]
-  const data = useMemo(() => ([
-    { subject: "Crecimiento", value: selected.metrics.growth },
-    { subject: "Estabilidad", value: selected.metrics.stability },
-    { subject: "Liquidez", value: selected.metrics.liquidity },
-    { subject: "Riesgo", value: selected.metrics.risk },
-  ]), [selected])
+  const data = useMemo(() => selected.chartMetrics, [selected])
 
   function handleSelect(id) {
     setInternalSelected(id)
@@ -31,12 +33,8 @@ export default function ScenarioComparison({ scenarios, selectedScenarioId, onSe
   }
 
   return (
-    <CardContainer className="scenario-comparison" id="escenarios">
-      <CardHeader
-        action={<Button size="sm" variant="ghost">Ver detalles</Button>}
-        kicker="Compara opciones"
-        title="Encuentra tu escenario"
-      />
+    <CardContainer className="scenario-comparison">
+      <CardHeader action={action} kicker={kicker} title={title} />
       <div className="scenario-comparison__options">
         {scenarios.map((scenario) => (
           <ScenarioOption
@@ -58,7 +56,7 @@ export default function ScenarioComparison({ scenarios, selectedScenarioId, onSe
           </RadarChart>
         </ResponsiveContainer>
       </div>
-      <Text className="scenario-comparison__selected">Tu selección: <strong>{selected.label}</strong></Text>
+      {selectedLabel && <Text className="scenario-comparison__selected">{selectedLabel}: <strong>{selected.label}</strong></Text>}
     </CardContainer>
   )
 }

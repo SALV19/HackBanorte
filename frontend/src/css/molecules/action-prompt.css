@@ -1,7 +1,6 @@
-@import "../tokens/colors.css";
 @import "../tokens/layout.css";
 
-.action-button {
+.action-prompt {
   align-items: center;
   display: flex;
   gap: var(--space-4);
@@ -9,19 +8,19 @@
   min-width: 18rem;
 }
 
-.action-button__text {
+.action-prompt__text {
   display: grid;
   gap: var(--space-1);
   text-align: left;
 }
 
-.action-button__description {
+.action-prompt__description {
   color: rgba(255, 255, 255, 0.82);
   font-size: var(--font-size-sm);
 }
 
 @media (max-width: 640px) {
-  .action-button {
+  .action-prompt {
     width: 100%;
   }
 }

@@ -14,9 +14,13 @@
   z-index: 10;
 }
 
-.app-header__brand {
+.app-header__brand,
+.app-header__profile {
   align-items: center;
   display: flex;
+}
+
+.app-header__brand {
   gap: var(--space-4);
 }
 
@@ -50,19 +54,17 @@
   text-decoration: none;
 }
 
-.app-header__nav a:first-child {
+.app-header__nav a[aria-current="page"] {
   color: var(--color-text-primary);
   font-weight: var(--font-weight-semibold);
 }
 
 .app-header__profile {
-  align-items: center;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-full);
   color: var(--color-text-primary);
   cursor: pointer;
-  display: flex;
   gap: var(--space-3);
   padding: var(--space-2) var(--space-4);
 }

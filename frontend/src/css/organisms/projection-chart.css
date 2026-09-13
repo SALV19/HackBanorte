@@ -1,6 +1,0 @@
-@import "../tokens/layout.css";
-
-.projection-chart__chart {
-  height: 18rem;
-  margin-top: var(--space-5);
-}

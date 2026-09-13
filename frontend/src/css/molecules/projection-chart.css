@@ -1,0 +1,33 @@
+@import "../tokens/colors.css";
+@import "../tokens/layout.css";
+
+.projection-chart {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.projection-chart__chart {
+  height: 18rem;
+}
+
+.segmented-control {
+  background: var(--color-gray-100);
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  padding: var(--space-1);
+}
+
+.segmented-control__item {
+  background: transparent;
+  border: 0;
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+}
+
+.segmented-control__item--active {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
+}

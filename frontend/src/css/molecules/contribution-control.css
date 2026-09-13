@@ -1,19 +1,18 @@
 @import "../tokens/colors.css";
 @import "../tokens/layout.css";
 
-.contribution-slider {
+.contribution-control {
   display: grid;
   gap: var(--space-6);
 }
 
-.contribution-slider__note {
+.contribution-control__note {
   align-items: center;
   color: var(--color-text-secondary);
   display: flex;
   gap: var(--space-2);
-  margin: 0;
 }
 
-.contribution-slider__note svg {
+.contribution-control__note svg {
   color: var(--color-primary);
 }

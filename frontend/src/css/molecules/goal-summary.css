@@ -1,19 +1,19 @@
 @import "../tokens/colors.css";
 @import "../tokens/layout.css";
 
-.goal-card__body {
+.goal-summary__body {
   align-items: center;
   display: flex;
   gap: var(--space-6);
   margin-top: var(--space-8);
 }
 
-.goal-card__copy {
+.goal-summary__copy {
   display: grid;
   gap: var(--space-4);
 }
 
-.goal-card__footer {
+.goal-summary__footer {
   border-top: 1px solid var(--color-border);
   display: flex;
   justify-content: space-between;
@@ -22,7 +22,7 @@
 }
 
 @media (max-width: 520px) {
-  .goal-card__body {
+  .goal-summary__body {
     align-items: flex-start;
     flex-direction: column;
   }

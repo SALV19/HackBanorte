@@ -21,18 +21,46 @@ export const scenariosData = [
     id: 'conservative',
     label: 'Conservador',
     annualReturn: 4.5,
-    metrics: { growth: 45, stability: 95, liquidity: 80, risk: 25 },
+    chartMetrics: [
+      { subject: 'Crecimiento', value: 45 },
+      { subject: 'Estabilidad', value: 95 },
+      { subject: 'Liquidez', value: 80 },
+      { subject: 'Riesgo', value: 25 },
+    ],
   },
   {
     id: 'balanced',
     label: 'Equilibrado',
     annualReturn: 7,
-    metrics: { growth: 72, stability: 72, liquidity: 60, risk: 58 },
+    chartMetrics: [
+      { subject: 'Crecimiento', value: 72 },
+      { subject: 'Estabilidad', value: 72 },
+      { subject: 'Liquidez', value: 60 },
+      { subject: 'Riesgo', value: 58 },
+    ],
   },
   {
     id: 'dynamic',
     label: 'Dinámico',
     annualReturn: 9.5,
-    metrics: { growth: 95, stability: 45, liquidity: 60, risk: 90 },
+    chartMetrics: [
+      { subject: 'Crecimiento', value: 95 },
+      { subject: 'Estabilidad', value: 45 },
+      { subject: 'Liquidez', value: 60 },
+      { subject: 'Riesgo', value: 90 },
+    ],
   },
+]
+
+export const projectionSeries = [
+  { key: 'optimistic', label: 'Optimista', color: 'var(--color-red-light)', strokeWidth: 2 },
+  { key: 'expected', label: 'Esperada', color: 'var(--color-primary)', fill: true, strokeWidth: 2.5 },
+  { key: 'conservative', label: 'Conservadora', color: 'var(--color-gray-500)', strokeWidth: 2 },
+]
+
+export const navItems = [
+  { href: '#resumen', label: 'Mi plan', active: true },
+  { href: '#proyeccion', label: 'Proyección' },
+  { href: '#escenarios', label: 'Escenarios' },
+  { href: '#ayuda', label: 'Ayuda' },
 ]
