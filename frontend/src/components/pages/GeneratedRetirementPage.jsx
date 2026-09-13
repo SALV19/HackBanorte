@@ -12,6 +12,7 @@ import ExpenseBreakdown from "../molecules/ExpenseBreakdown.jsx"
 import GoalSummary from "../molecules/GoalSummary.jsx"
 import MonthlyIncomeControl from "../molecules/MonthlyIncomeControl.jsx"
 import ProjectionChart from "../molecules/ProjectionChart.jsx"
+import RecommendationList from "../molecules/RecommendationList.jsx"
 import ScenarioComparison from "../molecules/ScenarioComparison.jsx"
 import TimelineSummary from "../molecules/TimelineSummary.jsx"
 import { formatMXN } from "../../utils/formatters.js"
@@ -114,6 +115,17 @@ function buildDefaultDashboard() {
       actionDescription: "Revisa tu plan personalizado",
       action: "confirmPlan",
     },
+    recommendations: {
+      kicker: "Tips personalizados",
+      title: "Qué hacer ahora",
+      items: [
+        {
+          title: "Empieza con una aportación automática",
+          description: "Programa una aportación mensual para convertir el ahorro en hábito.",
+          impact: "Primer paso claro para avanzar.",
+        },
+      ],
+    },
     disclaimer: "Esta proyección es estimativa y no constituye asesoría financiera.",
   }
 }
@@ -122,6 +134,7 @@ export default function GeneratedRetirementPage({ dashboard, onRestart }) {
   const config = dashboard || buildDefaultDashboard()
   const [contribution, setContribution] = useState(config.contribution.value)
   const [selectedScenarioId, setSelectedScenarioId] = useState(config.scenarios.selectedScenarioId)
+  const isRetiredDashboard = config.mode === "retired"
 
   const contributionMessage = useMemo(
     () => contribution >= 10000 ? "Vas adelantando tu objetivo." : config.cta.title,
@@ -173,7 +186,8 @@ export default function GeneratedRetirementPage({ dashboard, onRestart }) {
             targetValue={config.goal.targetValue}
             title={config.goal.title}
           />
-          <div className="generated-retirement-page__wide">
+          {!isRetiredDashboard && (
+            <div className="generated-retirement-page__wide">
             <ProjectionChart
               data={config.projection.data}
               kicker={config.projection.kicker}
@@ -181,7 +195,8 @@ export default function GeneratedRetirementPage({ dashboard, onRestart }) {
               series={config.projection.series}
               title={config.projection.title}
             />
-          </div>
+            </div>
+          )}
           <ContributionControl
             action={<SlidersHorizontal color="var(--color-text-muted)" aria-hidden="true" />}
             badge={config.contribution.badge}
@@ -195,15 +210,17 @@ export default function GeneratedRetirementPage({ dashboard, onRestart }) {
             title={config.contribution.title}
             value={contribution}
           />
-          <ScenarioComparison
-            action={<button className="segmented-control__item" type="button">Ver detalles</button>}
-            kicker={config.scenarios.kicker}
-            onSelectScenario={setSelectedScenarioId}
-            scenarios={config.scenarios.scenarios}
-            selectedScenarioId={selectedScenarioId}
-            selectedLabel={config.scenarios.selectedLabel}
-            title={config.scenarios.title}
-          />
+          {!isRetiredDashboard && (
+            <ScenarioComparison
+              action={<button className="segmented-control__item" type="button">Ver detalles</button>}
+              kicker={config.scenarios.kicker}
+              onSelectScenario={setSelectedScenarioId}
+              scenarios={config.scenarios.scenarios}
+              selectedScenarioId={selectedScenarioId}
+              selectedLabel={config.scenarios.selectedLabel}
+              title={config.scenarios.title}
+            />
+          )}
           <MonthlyIncomeControl
             action={<IconButton ariaLabel="Editar ingreso"><Pencil aria-hidden="true" /></IconButton>}
             description={config.income.description}
@@ -225,6 +242,13 @@ export default function GeneratedRetirementPage({ dashboard, onRestart }) {
             kicker={config.expenses.kicker}
             title={config.expenses.title}
           />
+          <div className="generated-retirement-page__wide">
+            <RecommendationList
+              items={config.recommendations.items}
+              kicker={config.recommendations.kicker}
+              title={config.recommendations.title}
+            />
+          </div>
         </section>
 
         <section className="generated-retirement-page__cta" id="ayuda">
