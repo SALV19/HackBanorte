@@ -3,7 +3,8 @@
 @import "../tokens/layout.css";
 
 .number-input,
-.text-input {
+.text-input,
+.textarea-input {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius-lg);
@@ -25,4 +26,11 @@
 .text-input {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-medium);
+}
+
+.textarea-input {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  min-height: 7rem;
+  resize: vertical;
 }
