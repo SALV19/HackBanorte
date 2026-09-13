@@ -1,0 +1,20 @@
+{
+  "fields": [
+    {
+      "type": "autoEmbed",
+      "modality": "text",
+      "path": "content",
+      "model": "voyage-4-large"
+    },
+    {
+      "type": "autoEmbed",
+      "modality": "text",
+      "path": "title",
+      "model": "voyage-4"
+    },
+    {
+      "type": "filter",
+      "path": "id_user"
+    }
+  ]
+}

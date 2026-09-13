@@ -4,6 +4,7 @@ import { messageContent } from "../types/inputMessage.types";
 import { AppError } from "../types/error.type";
 import runLLM from "../services/llm";
 import getUserFinance from "./getUserFinance.usecase";
+import { vectorSearch } from "./tools.uscase";
 
 async function processMessage(context: inputMessageType) {
   const { content, userName, conversationId } = context;
@@ -20,6 +21,7 @@ async function processMessage(context: inputMessageType) {
   }
 
   const { income, expenses } = await getUserFinance(String(userData._id));
+  const documents = await vectorSearch(content, String(userData._id));
 
   const messageContent: messageContent = {
     // .toObject() porque userData es un Document de Mongoose: sin esto se
@@ -28,6 +30,7 @@ async function processMessage(context: inputMessageType) {
     income: income,
     expenses: expenses,
     content,
+    documents,
   };
 
   const intention = await runLLM(messageContent, conversationId);
